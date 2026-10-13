@@ -1,199 +1,25 @@
 /* =========================================================
    WuXiaoHei · personal site scripts
-   - hero dot field (subtle wave)
-   - art dot field (interactive, pointer-driven)
-   - scroll reveal + footer year
+   - scroll reveal
+   - photography lightbox
+   - footer year
    ========================================================= */
 (function () {
   'use strict';
 
-  var ACCENT = '#2b5ce6';
-  var ACCENT_SOFT = '#9fb6f5';
-  var WARM = '#c8613a';
   var prefersReduced = window.matchMedia &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------- canvas setup helper ---------- */
-  function setupCanvas(canvas) {
-    var ctx = canvas.getContext('2d');
-    var dpr = Math.min(window.devicePixelRatio || 1, 2);
-    var rect = canvas.getBoundingClientRect();
-    var w = rect.width || canvas.width;
-    var h = rect.height || (canvas.height / canvas.width) * w;
-    canvas.width = Math.round(w * dpr);
-    canvas.height = Math.round(h * dpr);
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    return { ctx: ctx, w: w, h: h };
-  }
-
   /* =========================================================
-     1. hero dot field — gentle radial wave
-     ========================================================= */
-  (function heroDots() {
-    var canvas = document.getElementById('dotfield');
-    if (!canvas) return;
-
-    var state = setupCanvas(canvas);
-    var ctx = state.ctx, W = state.w, H = state.h;
-    var t = 0;
-
-    function draw() {
-      var gap = 20;
-      var cols = Math.ceil(W / gap) + 1;
-      var rows = Math.ceil(H / gap) + 1;
-      var cx = W / 2, cy = H / 2;
-      var maxD = Math.sqrt(cx * cx + cy * cy);
-
-      ctx.clearRect(0, 0, W, H);
-
-      for (var i = 0; i < cols; i++) {
-        for (var j = 0; j < rows; j++) {
-          var x = i * gap;
-          var y = j * gap;
-          var d = Math.sqrt((x - cx) * (x - cx) + (y - cy) * (y - cy));
-          var wave = Math.sin(d / 46 - t) * 0.5 + 0.5;      // 0..1
-          var r = 1.05 + wave * 2.05;
-          var a = 0.10 + wave * 0.5;
-          var mix = d / maxD;
-          ctx.beginPath();
-          ctx.arc(x, y, r, 0, Math.PI * 2);
-          ctx.fillStyle = mix > 0.62
-            ? 'rgba(159,182,245,' + a.toFixed(3) + ')'
-            : (mix > 0.3
-                ? 'rgba(43,92,230,' + (a * 0.85).toFixed(3) + ')'
-                : 'rgba(22,24,29,' + (a * 0.42).toFixed(3) + ')');
-          ctx.fill();
-        }
-      }
-      t += 0.03;
-      if (!prefersReduced) requestAnimationFrame(draw);
-    }
-
-    if (prefersReduced) {
-      draw(); // one static frame
-    } else {
-      draw();
-      var ro = new ResizeObserver(function () {
-        state = setupCanvas(canvas);
-        ctx = state.ctx; W = state.w; H = state.h;
-      });
-      ro.observe(canvas);
-    }
-  })();
-
-  /* =========================================================
-     2. art dot field — interactive point field
-        dots drift by default; the pointer pushes/brightens them
-     ========================================================= */
-  (function artDots() {
-    var canvas = document.getElementById('artdots');
-    if (!canvas) return;
-
-    var state = setupCanvas(canvas);
-    var ctx = state.ctx, W = state.w, H = state.h;
-
-    var pointer = { x: -9999, y: -9999, active: false };
-    var R = 130;                 // influence radius
-    var dots = [];
-    var t = 0;
-
-    function build() {
-      dots = [];
-      var gap = 21;
-      var cols = Math.ceil(W / gap);
-      var rows = Math.ceil(H / gap);
-      var ox = (W - (cols - 1) * gap) / 2;
-      var oy = (H - (rows - 1) * gap) / 2;
-      for (var i = 0; i < cols; i++) {
-        for (var j = 0; j < rows; j++) {
-          var bx = ox + i * gap;
-          var by = oy + j * gap;
-          dots.push({
-            bx: bx, by: by,
-            x: bx, y: by,
-            seed: Math.random() * Math.PI * 2
-          });
-        }
-      }
-    }
-
-    function frame() {
-      ctx.clearRect(0, 0, W, H);
-
-      for (var k = 0; k < dots.length; k++) {
-        var d = dots[k];
-
-        // idle breathing
-        var br = 0.5 + 0.5 * Math.sin(t * 0.9 + d.seed);
-        var r = 1.2 + br * 0.7;
-        var alpha = 0.16 + br * 0.14;
-        var color = 'rgba(22,24,29,' + alpha.toFixed(3) + ')';
-
-        if (pointer.active) {
-          var dx = d.bx - pointer.x;
-          var dy = d.by - pointer.y;
-          var dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < R && dist > 0.001) {
-            var f = 1 - dist / R;          // 0..1
-            var push = f * f * 26;         // displacement
-            d.x += (d.bx + (dx / dist) * push - d.x) * 0.18;
-            d.y += (d.by + (dy / dist) * push - d.y) * 0.18;
-            r += f * 3.4;
-            color = 'rgba(200,97,58,' + (0.20 + f * 0.72).toFixed(3) + ')';
-          } else {
-            d.x += (d.bx - d.x) * 0.09;
-            d.y += (d.by - d.y) * 0.09;
-          }
-        } else {
-          d.x += (d.bx - d.x) * 0.06;
-          d.y += (d.by - d.y) * 0.06;
-        }
-
-        ctx.beginPath();
-        ctx.arc(d.x, d.y, r, 0, Math.PI * 2);
-        ctx.fillStyle = color;
-        ctx.fill();
-      }
-
-      t += 0.018;
-      if (!prefersReduced) requestAnimationFrame(frame);
-    }
-
-    function toLocal(e) {
-      var rect = canvas.getBoundingClientRect();
-      pointer.x = (e.clientX - rect.left) * (W / rect.width);
-      pointer.y = (e.clientY - rect.top) * (H / rect.height);
-      pointer.active = true;
-    }
-
-    canvas.addEventListener('pointermove', toLocal);
-    canvas.addEventListener('pointerdown', toLocal);
-    canvas.addEventListener('pointerleave', function () {
-      pointer.active = false;
-      pointer.x = pointer.y = -9999;
-    });
-
-    build();
-    frame();
-
-    var ro = new ResizeObserver(function () {
-      state = setupCanvas(canvas);
-      ctx = state.ctx; W = state.w; H = state.h;
-      build();
-    });
-    ro.observe(canvas);
-  })();
-
-  /* =========================================================
-     3. scroll reveal
+     1. scroll reveal
      ========================================================= */
   (function reveal() {
     var targets = document.querySelectorAll(
-      '.section-title, .section-sub, .about-grid, .card, .art-feature, .gallery-item, .contact-card'
+      '.section-title, .section-sub, .about-grid, .card, .photo, .photo-hint, .contact-card'
     );
     if (!('IntersectionObserver' in window) || prefersReduced) return;
 
-    targets.forEach(function (el) { el.classList.add('reveal'); });
+    Array.prototype.forEach.call(targets, function (el) { el.classList.add('reveal'); });
 
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
@@ -204,11 +30,111 @@
       });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
 
-    targets.forEach(function (el) { io.observe(el); });
+    Array.prototype.forEach.call(targets, function (el) { io.observe(el); });
   })();
 
   /* =========================================================
-     4. footer year
+     2. photography lightbox
+        only figures that actually contain an <img> are clickable
+     ========================================================= */
+  (function lightbox() {
+    var box = document.getElementById('lightbox');
+    if (!box) return;
+
+    var imgEl = document.getElementById('lbImg');
+    var capEl = document.getElementById('lbCaption');
+    var btnClose = box.querySelector('.lb-close');
+    var btnPrev = box.querySelector('.lb-prev');
+    var btnNext = box.querySelector('.lb-next');
+
+    // collect real photos only (skip empty placeholder slots)
+    var figures = Array.prototype.slice.call(
+      document.querySelectorAll('.photo')
+    ).filter(function (f) { return !!f.querySelector('img'); });
+
+    var index = 0;
+    var lastFocus = null;
+
+    function itemsOf(fig) {
+      var img = fig.querySelector('img');
+      var title = fig.querySelector('.photo-title');
+      var year = fig.querySelector('.photo-year');
+      return {
+        src: img.getAttribute('data-full') || img.getAttribute('src'),
+        alt: img.getAttribute('alt') || '',
+        caption: [title ? title.textContent.trim() : '', year ? year.textContent.trim() : '']
+          .filter(Boolean).join(' · ')
+      };
+    }
+
+    function render() {
+      var it = itemsOf(figures[index]);
+      imgEl.src = it.src;
+      imgEl.alt = it.alt;
+      capEl.textContent = it.caption;
+    }
+
+    function open(i) {
+      if (!figures.length) return;
+      index = (i + figures.length) % figures.length;
+      render();
+      lastFocus = document.activeElement;
+      if (box.hasAttribute('hidden')) box.removeAttribute('hidden');
+      // next frame so the transition runs after removing [hidden]
+      requestAnimationFrame(function () { box.classList.add('is-open'); });
+      document.body.style.overflow = 'hidden';
+      btnClose.focus();
+    }
+
+    function close() {
+      box.classList.remove('is-open');
+      document.body.style.overflow = '';
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    function step(d) {
+      index = (index + d + figures.length) % figures.length;
+      render();
+    }
+
+    figures.forEach(function (fig, i) {
+      fig.addEventListener('click', function (e) {
+        e.preventDefault();
+        open(i);
+      });
+    });
+
+    btnClose.addEventListener('click', close);
+    btnPrev.addEventListener('click', function (e) { e.stopPropagation(); step(-1); });
+    btnNext.addEventListener('click', function (e) { e.stopPropagation(); step(1); });
+
+    // click on the dark backdrop closes
+    box.addEventListener('click', function (e) {
+      if (e.target === box || e.target.classList.contains('lb-figure')) close();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (!box.classList.contains('is-open')) return;
+      if (e.key === 'Escape') close();
+      else if (e.key === 'ArrowLeft') step(-1);
+      else if (e.key === 'ArrowRight') step(1);
+    });
+
+    // touch swipe
+    var startX = null;
+    box.addEventListener('touchstart', function (e) {
+      startX = e.changedTouches[0].clientX;
+    }, { passive: true });
+    box.addEventListener('touchend', function (e) {
+      if (startX === null) return;
+      var dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 45) step(dx < 0 ? 1 : -1);
+      startX = null;
+    }, { passive: true });
+  })();
+
+  /* =========================================================
+     3. footer year
      ========================================================= */
   (function year() {
     var el = document.getElementById('year');

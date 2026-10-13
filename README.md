@@ -1,6 +1,6 @@
 # WuXiaoHei · 个人主页
 
-科研 + 艺术双主题的浅色简洁个人主页，托管于 GitHub Pages。
+科研 + 摄影双主题的浅色简洁个人主页，托管于 GitHub Pages。
 
 线上地址：**https://littleBlack2003.github.io**
 
@@ -8,12 +8,12 @@
 
 ```
 .
-├── index.html            # 单页主页（关于 / 研究 / 艺术 / 联系）
+├── index.html            # 单页主页（关于 / 研究 / 摄影 / 联系）
 ├── assets/
 │   ├── css/style.css     # 全部样式
-│   ├── js/main.js        # 点阵动画、滚动淡入
+│   ├── js/main.js        # 滚动淡入、图片大图查看
 │   ├── img/favicon.svg   # 站点图标
-│   └── art/README.md     # 艺术作品图片放置说明
+│   └── art/README.md     # 摄影作品图片放置说明
 ├── .nojekyll             # 跳过 Jekyll 处理，保证资源路径正常
 └── README.md
 ```
@@ -43,6 +43,6 @@ git push
 
 - [ ] 顶部的姓名与简介文案（`index.html` 中 `.hero` 部分）
 - [ ] 「研究」卡片里的仓库链接，目前统一指向 GitHub 仓库列表，可改为具体仓库地址
-- [ ] 「艺术」板块的三张占位卡片，替换为真实作品（见 `assets/art/README.md`）
+- [ ] 「摄影」板块替换为真实照片，目前是 6 个占位位（见 `assets/art/README.md`）
 - [ ] 联系方式的邮箱与社交链接
 - [ ] 如需自定义域名，在仓库根目录添加 `CNAME` 文件

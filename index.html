@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WuXiaoHei · 科研与艺术</title>
-<meta name="description" content="WuXiaoHei — 武汉大学。有机太阳能电池稳定性与器件物理研究，兼作艺术创作。">
+<title>WuXiaoHei · 科研与摄影</title>
+<meta name="description" content="WuXiaoHei — 武汉大学。有机太阳能电池稳定性与器件物理研究；个人艺术摄影作品。">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -19,7 +19,7 @@
     <nav class="nav" aria-label="主导航">
       <a href="#about">关于</a>
       <a href="#research">研究</a>
-      <a href="#art">艺术</a>
+      <a href="#photos">摄影</a>
       <a href="#contact">联系</a>
     </nav>
   </div>
@@ -29,32 +29,27 @@
 
   <!-- ============ HERO ============ -->
   <section class="hero">
-    <div class="wrap hero-inner">
-      <div class="hero-main">
-        <p class="eyebrow">武汉大学 · Wuhan University</p>
-        <h1>你好，我是 <span class="ink">吴小黑</span> / WuXiaoHei</h1>
-        <p class="lead">
-          我研究有机光伏器件的稳定性与失效机理 —— 从反向偏压下的电流拐点，
-          到用短期加速老化数据去预测长期效率衰减。我也相信，
-          <em>测量工具本身值得被认真做</em>，于是自己写阻抗谱自动化系统、改开源源表。
-        </p>
-        <p class="lead sub">
-          在公式与示波器之外，我画画、做生成艺术，把「点」当作最小单位去组织秩序。
-        </p>
-        <div class="hero-tags">
-          <span class="tag">有机太阳能电池</span>
-          <span class="tag">器件物理建模</span>
-          <span class="tag">稳定性预测</span>
-          <span class="tag">自动化测量</span>
-          <span class="tag">生成艺术</span>
-        </div>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#research">看我的研究</a>
-          <a class="btn btn-ghost" href="#art">看我的作品</a>
-        </div>
+    <div class="wrap">
+      <p class="eyebrow">武汉大学 · Wuhan University</p>
+      <h1>你好，我是 <span class="ink">吴小黑</span> / WuXiaoHei</h1>
+      <p class="lead">
+        我研究有机光伏器件的稳定性与失效机理 —— 从反向偏压下的电流拐点，
+        到用短期加速老化数据去预测长期效率衰减。我也相信，
+        <em>测量工具本身值得被认真做</em>，于是自己写阻抗谱自动化系统、改开源源表。
+      </p>
+      <p class="lead sub">
+        科研之外，我拍照。这里的「摄影」板块就是我放艺术摄影作品的地方。
+      </p>
+      <div class="hero-tags">
+        <span class="tag">有机太阳能电池</span>
+        <span class="tag">器件物理建模</span>
+        <span class="tag">稳定性预测</span>
+        <span class="tag">自动化测量</span>
+        <span class="tag">摄影</span>
       </div>
-      <div class="hero-side" aria-hidden="true">
-        <canvas id="dotfield" width="420" height="420"></canvas>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#research">看我的研究</a>
+        <a class="btn btn-ghost" href="#photos">看我的摄影</a>
       </div>
     </div>
   </section>
@@ -203,37 +198,86 @@
     </div>
   </section>
 
-  <!-- ============ ART ============ -->
-  <section class="section" id="art">
+  <!-- ============ PHOTOGRAPHY ============ -->
+  <section class="section" id="photos">
     <div class="wrap">
-      <h2 class="section-title"><span class="idx">03</span> 艺术</h2>
+      <h2 class="section-title"><span class="idx">03</span> 摄影</h2>
       <p class="section-sub">
-        科研之外的另一半。对我来说，「点」是最小的绘画单位 —— 一滴墨、一个数据点、一颗像素，
-        排列方式决定了它成为噪声还是图案。
+        我的艺术摄影作品。点击任意一张可查看原图（不裁剪），支持键盘左右方向键翻页。
       </p>
 
-      <div class="art-feature">
-        <canvas id="artdots" width="900" height="380"></canvas>
-        <div class="art-feature-caption">
-          <strong>《点阵 · Point Field》</strong>
-          <span>生成艺术 / 网页交互作品。移动鼠标或轻触画面，点会随你聚散。</span>
-        </div>
+      <!--
+        添加照片：把图片放进 assets/art/，然后复制下面这段结构替换占位卡片：
+
+        <figure class="photo">
+          <div class="photo-media">
+            <img src="assets/art/photo-01.jpg" alt="作品名" loading="lazy">
+          </div>
+          <figcaption class="photo-meta">
+            <span class="photo-title">作品名</span>
+            <span class="photo-year">2026</span>
+          </figcaption>
+        </figure>
+
+        想加更多作品，直接复制整段 <figure class="photo"> 即可，网格会自动排版。
+      -->
+
+      <div class="photo-grid" id="photoGrid">
+
+        <figure class="photo is-empty">
+          <div class="photo-media"><span class="photo-plus" aria-hidden="true">+</span></div>
+          <figcaption class="photo-meta">
+            <span class="photo-title">作品位 01</span>
+            <span class="photo-year">待添加</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo is-empty">
+          <div class="photo-media"><span class="photo-plus" aria-hidden="true">+</span></div>
+          <figcaption class="photo-meta">
+            <span class="photo-title">作品位 02</span>
+            <span class="photo-year">待添加</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo is-empty">
+          <div class="photo-media"><span class="photo-plus" aria-hidden="true">+</span></div>
+          <figcaption class="photo-meta">
+            <span class="photo-title">作品位 03</span>
+            <span class="photo-year">待添加</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo is-empty">
+          <div class="photo-media"><span class="photo-plus" aria-hidden="true">+</span></div>
+          <figcaption class="photo-meta">
+            <span class="photo-title">作品位 04</span>
+            <span class="photo-year">待添加</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo is-empty">
+          <div class="photo-media"><span class="photo-plus" aria-hidden="true">+</span></div>
+          <figcaption class="photo-meta">
+            <span class="photo-title">作品位 05</span>
+            <span class="photo-year">待添加</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo is-empty">
+          <div class="photo-media"><span class="photo-plus" aria-hidden="true">+</span></div>
+          <figcaption class="photo-meta">
+            <span class="photo-title">作品位 06</span>
+            <span class="photo-year">待添加</span>
+          </figcaption>
+        </figure>
+
       </div>
 
-      <div class="gallery" id="gallery">
-        <figure class="gallery-item placeholder">
-          <div class="ph-icon">+</div>
-          <figcaption>作品位 01<span>把你的图片放进 assets/art/ 并替换这里</span></figcaption>
-        </figure>
-        <figure class="gallery-item placeholder">
-          <div class="ph-icon">+</div>
-          <figcaption>作品位 02<span>绘画 / 摄影 / 手稿，均可</span></figcaption>
-        </figure>
-        <figure class="gallery-item placeholder">
-          <div class="ph-icon">+</div>
-          <figcaption>作品位 03<span>支持多张图片与说明文字</span></figcaption>
-        </figure>
-      </div>
+      <p class="photo-hint">
+        图片存放目录 <code>assets/art/</code>，替换方法见该目录下的 <code>README.md</code>。
+        网格中显示为统一比例裁切，点开查看原图。
+      </p>
     </div>
   </section>
 
@@ -241,7 +285,7 @@
   <section class="section section-alt" id="contact">
     <div class="wrap">
       <h2 class="section-title"><span class="idx">04</span> 联系</h2>
-      <p class="section-sub">欢迎就器件物理、稳定性建模、测量自动化或艺术合作交流。</p>
+      <p class="section-sub">欢迎就器件物理、稳定性建模、测量自动化或摄影交流。</p>
       <div class="contact-grid">
         <a class="contact-card" href="https://github.com/littleBlack2003" target="_blank" rel="noopener">
           <span class="c-label">GitHub</span>
@@ -264,9 +308,20 @@
 <footer class="site-footer">
   <div class="wrap footer-inner">
     <span>© <span id="year">2026</span> WuXiaoHei</span>
-    <span class="footer-note">Hosted on GitHub Pages · 以简洁为美</span>
+    <span class="footer-note">Hosted on GitHub Pages</span>
   </div>
 </footer>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="查看大图" hidden>
+  <button class="lb-btn lb-close" type="button" aria-label="关闭">&times;</button>
+  <button class="lb-btn lb-prev" type="button" aria-label="上一张">&#8249;</button>
+  <button class="lb-btn lb-next" type="button" aria-label="下一张">&#8250;</button>
+  <figure class="lb-figure">
+    <img id="lbImg" src="" alt="">
+    <figcaption class="lb-caption" id="lbCaption"></figcaption>
+  </figure>
+</div>
 
 <script src="assets/js/main.js"></script>
 </body>
