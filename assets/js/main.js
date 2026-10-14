@@ -1,42 +1,15 @@
 /* =========================================================
    WuXiaoHei · personal site scripts
-   - scroll reveal
-   - photography lightbox
-   - footer year
+   - 摄影作品大图查看（lightbox）
+   - 页脚年份
    ========================================================= */
 (function () {
   'use strict';
 
-  var prefersReduced = window.matchMedia &&
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* =========================================================
-     1. scroll reveal
-     ========================================================= */
-  (function reveal() {
-    var targets = document.querySelectorAll(
-      '.section-title, .section-sub, .about-grid, .card, .photo, .photo-hint, .contact-card'
-    );
-    if (!('IntersectionObserver' in window) || prefersReduced) return;
-
-    Array.prototype.forEach.call(targets, function (el) { el.classList.add('reveal'); });
-
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (en.isIntersecting) {
-          en.target.classList.add('is-visible');
-          io.unobserve(en.target);
-        }
-      });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
-
-    Array.prototype.forEach.call(targets, function (el) { io.observe(el); });
-  })();
-
-  /* =========================================================
-     2. photography lightbox
-        only figures that actually contain an <img> are clickable
-     ========================================================= */
+  /* ---------------------------------------------------------
+     1. 摄影作品 lightbox
+        只有真正含 <img> 的作品卡片可点击
+     --------------------------------------------------------- */
   (function lightbox() {
     var box = document.getElementById('lightbox');
     if (!box) return;
@@ -47,7 +20,7 @@
     var btnPrev = box.querySelector('.lb-prev');
     var btnNext = box.querySelector('.lb-next');
 
-    // collect real photos only (skip empty placeholder slots)
+    // 只收集已放入图片的作品（跳过 is-empty 占位）
     var figures = Array.prototype.slice.call(
       document.querySelectorAll('.photo')
     ).filter(function (f) { return !!f.querySelector('img'); });
@@ -62,8 +35,10 @@
       return {
         src: img.getAttribute('data-full') || img.getAttribute('src'),
         alt: img.getAttribute('alt') || '',
-        caption: [title ? title.textContent.trim() : '', year ? year.textContent.trim() : '']
-          .filter(Boolean).join(' · ')
+        caption: [
+          title ? title.textContent.trim() : '',
+          year ? year.textContent.trim() : ''
+        ].filter(Boolean).join(' · ')
       };
     }
 
@@ -80,8 +55,10 @@
       render();
       lastFocus = document.activeElement;
       if (box.hasAttribute('hidden')) box.removeAttribute('hidden');
-      // next frame so the transition runs after removing [hidden]
-      requestAnimationFrame(function () { box.classList.add('is-open'); });
+      // 强制一次重排，让 opacity/visibility 的过渡正常触发
+      // （比 requestAnimationFrame 更稳，页面在后台时也一定执行）
+      void box.offsetWidth;
+      box.classList.add('is-open');
       document.body.style.overflow = 'hidden';
       btnClose.focus();
     }
@@ -108,7 +85,7 @@
     btnPrev.addEventListener('click', function (e) { e.stopPropagation(); step(-1); });
     btnNext.addEventListener('click', function (e) { e.stopPropagation(); step(1); });
 
-    // click on the dark backdrop closes
+    // 点击深色背景关闭
     box.addEventListener('click', function (e) {
       if (e.target === box || e.target.classList.contains('lb-figure')) close();
     });
@@ -120,7 +97,7 @@
       else if (e.key === 'ArrowRight') step(1);
     });
 
-    // touch swipe
+    // 触摸左右滑动
     var startX = null;
     box.addEventListener('touchstart', function (e) {
       startX = e.changedTouches[0].clientX;
@@ -133,9 +110,9 @@
     }, { passive: true });
   })();
 
-  /* =========================================================
-     3. footer year
-     ========================================================= */
+  /* ---------------------------------------------------------
+     2. 页脚年份
+     --------------------------------------------------------- */
   (function year() {
     var el = document.getElementById('year');
     if (el) el.textContent = String(new Date().getFullYear());

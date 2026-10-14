@@ -3,316 +3,269 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WuXiaoHei · 科研与摄影</title>
-<meta name="description" content="WuXiaoHei — 武汉大学。有机太阳能电池稳定性与器件物理研究；个人艺术摄影作品。">
+<title>WuXiaoHei</title>
+<meta name="description" content="WuXiaoHei — 武汉大学。有机太阳能电池稳定性与器件物理研究；艺术摄影作品。">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-<header class="site-header" id="top">
-  <div class="wrap header-inner">
-    <a class="brand" href="#top">
-      <span class="brand-mark" aria-hidden="true"></span>
-      <span class="brand-text">WuXiaoHei</span>
-    </a>
+<!-- ================= masthead ================= -->
+<header class="masthead">
+  <div class="masthead__inner">
     <nav class="nav" aria-label="主导航">
-      <a href="#about">关于</a>
-      <a href="#research">研究</a>
-      <a href="#photos">摄影</a>
-      <a href="#contact">联系</a>
+      <ul class="nav__list">
+        <li class="nav__item nav__item--home"><a href="#top">WuXiaoHei</a></li>
+        <li class="nav__item"><a href="#about">关于</a></li>
+        <li class="nav__item"><a href="#research">研究</a></li>
+        <li class="nav__item"><a href="#photos">摄影</a></li>
+        <li class="nav__item"><a href="#contact">联系</a></li>
+      </ul>
     </nav>
   </div>
 </header>
 
-<main>
+<div class="initial-content" id="top">
+  <div class="container">
 
-  <!-- ============ HERO ============ -->
-  <section class="hero">
-    <div class="wrap">
-      <p class="eyebrow">武汉大学 · Wuhan University</p>
-      <h1>你好，我是 <span class="ink">吴小黑</span> / WuXiaoHei</h1>
-      <p class="lead">
-        我研究有机光伏器件的稳定性与失效机理 —— 从反向偏压下的电流拐点，
-        到用短期加速老化数据去预测长期效率衰减。我也相信，
-        <em>测量工具本身值得被认真做</em>，于是自己写阻抗谱自动化系统、改开源源表。
-      </p>
-      <p class="lead sub">
-        科研之外，我拍照。这里的「摄影」板块就是我放艺术摄影作品的地方。
-      </p>
-      <div class="hero-tags">
-        <span class="tag">有机太阳能电池</span>
-        <span class="tag">器件物理建模</span>
-        <span class="tag">稳定性预测</span>
-        <span class="tag">自动化测量</span>
-        <span class="tag">摄影</span>
-      </div>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#research">看我的研究</a>
-        <a class="btn btn-ghost" href="#photos">看我的摄影</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ ABOUT ============ -->
-  <section class="section" id="about">
-    <div class="wrap">
-      <h2 class="section-title"><span class="idx">01</span> 关于</h2>
-      <div class="about-grid">
-        <div class="about-text">
-          <p>
-            我在武汉大学从事有机太阳能电池（OSC）相关研究，关注器件在应力条件下的退化路径：
-            反向偏压下的非欧姆拐点、载流子迁移率与复合的温度依赖、以及外推长期寿命时的模型可外推性。
-          </p>
-          <p>
-            研究方法上，我倾向于「物理模型 + 数据驱动」的混合路线：先用物理约束搭骨架，
-            再让机器学习去学残差，而不是把黑箱丢给数据。同时也做实验测量，
-            包括阻抗谱（EIS）、偏压扫描与高通量老化测试。
-          </p>
-          <p>
-            工程这边，我给自己实验室做了整套工具链 —— 从 4284A 的阻抗谱自动化采集、
-            到 KiCad 重画的源表（μSMU-neo）、再到高通量测试治具的 CAD 设计。
+    <!-- ================= sidebar ================= -->
+    <aside class="sidebar">
+      <div class="author">
+        <div class="author__avatar">
+          <img src="assets/img/avatar.svg" alt="WuXiaoHei">
+        </div>
+        <div class="author__content">
+          <h3 class="author__name">WuXiaoHei</h3>
+          <p class="author__bio">武汉大学<br>有机光伏器件物理</p>
+          <p class="author__loc">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+            湖北 · 武汉
           </p>
         </div>
-        <aside class="about-facts">
-          <div class="fact">
-            <div class="fact-k">单位</div>
-            <div class="fact-v">武汉大学</div>
-          </div>
-          <div class="fact">
-            <div class="fact-k">所在地</div>
-            <div class="fact-v">湖北 · 武汉</div>
-          </div>
-          <div class="fact">
-            <div class="fact-k">方向</div>
-            <div class="fact-v">有机光伏稳定性 / 器件物理 / 自动化测量</div>
-          </div>
-          <div class="fact">
-            <div class="fact-k">GitHub</div>
-            <div class="fact-v"><a href="https://github.com/littleBlack2003" target="_blank" rel="noopener">@littleBlack2003</a></div>
-          </div>
-        </aside>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ RESEARCH ============ -->
-  <section class="section section-alt" id="research">
-    <div class="wrap">
-      <h2 class="section-title"><span class="idx">02</span> 研究</h2>
-      <p class="section-sub">以下方向对应我公开在 GitHub 上的工作。</p>
-
-      <div class="cards">
-
-        <article class="card">
-          <div class="card-head">
-            <span class="dot dot-blue"></span>
-            <h3>有机太阳能电池稳定性预测</h3>
-          </div>
-          <p>
-            用短期（200 h）加速老化数据预测长期（500–2000 h）的 PCE 保持率。
-            核心是「物理模型外推 + 机器学习学残差」，并搭建 Transformer 时序分支做对照。
-          </p>
-          <p class="card-note">多光强（1x / 1.5x）短期曲线 · 5 折交叉验证 · 五个目标时刻</p>
-          <div class="tags">
-            <span>机器学习</span><span>寿命外推</span><span>Transformer</span>
-          </div>
-          <a class="card-link" href="https://github.com/littleBlack2003?tab=repositories" target="_blank" rel="noopener">查看仓库 →</a>
-        </article>
-
-        <article class="card">
-          <div class="card-head">
-            <span class="dot dot-blue"></span>
-            <h3>反向偏压下的电流拐点机理</h3>
-          </div>
-          <p>
-            面向 PM6:Y6 体系，研究反向偏压区的「拐点」（reverse-bias knee）来源。
-            采用无外部分流电阻的本征模型，在 100–300 K 内做温度扫描与数值审计，
-            并保留完整的实验约束与可复现审计链。
-          </p>
-          <p class="card-note">物理模型 + 专家评审包 + 哈希清单校验</p>
-          <div class="tags">
-            <span>器件建模</span><span>低温输运</span><span>可复现研究</span>
-          </div>
-          <a class="card-link" href="https://github.com/littleBlack2003?tab=repositories" target="_blank" rel="noopener">查看仓库 →</a>
-        </article>
-
-        <article class="card">
-          <div class="card-head">
-            <span class="dot dot-green"></span>
-            <h3>EIS 阻抗谱自动化测量系统</h3>
-          </div>
-          <p>
-            通过 VISA/GPIB 控制 HP/Agilent 4284A，做频率扫描与复阻抗采集，
-            实时绘制 Nyquist 与 Bode 曲线，支持开短路校准、CSV 导出与等效电路拟合。
-          </p>
-          <p class="card-note">命令行 + 桌面 GUI + 无硬件仿真模式</p>
-          <div class="tags">
-            <span>Python</span><span>VISA / GPIB</span><span>仪器自动化</span>
-          </div>
-          <a class="card-link" href="https://github.com/littleBlack2003?tab=repositories" target="_blank" rel="noopener">查看仓库 →</a>
-        </article>
-
-        <article class="card">
-          <div class="card-head">
-            <span class="dot dot-green"></span>
-            <h3>μSMU-neo 开源源表改版</h3>
-          </div>
-          <p>
-            基于开源 μSMU 的改版：保持 ±5 V / ±40 mA 量程不变，修正原设计评审中的安全与采样问题，
-            更新 IC 型号至国内现货可采购，并在 STM32G431 上重写固件。
-          </p>
-          <p class="card-note">KiCad 10 硬件工程 · 国产供应链 · 许可合规保留署名</p>
-          <div class="tags">
-            <span>KiCad</span><span>STM32</span><span>开源硬件</span>
-          </div>
-          <a class="card-link" href="https://github.com/littleBlack2003?tab=repositories" target="_blank" rel="noopener">查看仓库 →</a>
-        </article>
-
-        <article class="card">
-          <div class="card-head">
-            <span class="dot dot-green"></span>
-            <h3>高通量 OSC 测试治具</h3>
-          </div>
-          <p>
-            面向高通量老化测试的机械治具与夹具设计，包含 25 mm 片子及其盖板的三维 CAD 模型，
-            用于支撑多器件并行测试的装夹与定位。
-          </p>
-          <p class="card-note">SolidWorks 2025 导出 STEP AP203</p>
-          <div class="tags">
-            <span>机械设计</span><span>高通量测试</span><span>CAD</span>
-          </div>
-          <a class="card-link" href="https://github.com/littleBlack2003?tab=repositories" target="_blank" rel="noopener">查看仓库 →</a>
-        </article>
-
-        <article class="card card-muted">
-          <div class="card-head">
-            <span class="dot dot-gray"></span>
-            <h3>更多工作</h3>
-          </div>
-          <p>还有电子系统设计、教学资料与实验数据整理等若干仓库，可在 GitHub 主页查看完整列表。</p>
-          <a class="card-link" href="https://github.com/littleBlack2003?tab=repositories" target="_blank" rel="noopener">前往 GitHub →</a>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ PHOTOGRAPHY ============ -->
-  <section class="section" id="photos">
-    <div class="wrap">
-      <h2 class="section-title"><span class="idx">03</span> 摄影</h2>
-      <p class="section-sub">
-        我的艺术摄影作品。点击任意一张可查看原图（不裁剪），支持键盘左右方向键翻页。
-      </p>
-
-      <!--
-        添加照片：把图片放进 assets/art/，然后复制下面这段结构替换占位卡片：
-
-        <figure class="photo">
-          <div class="photo-media">
-            <img src="assets/art/photo-01.jpg" alt="作品名" loading="lazy">
-          </div>
-          <figcaption class="photo-meta">
-            <span class="photo-title">作品名</span>
-            <span class="photo-year">2026</span>
-          </figcaption>
-        </figure>
-
-        想加更多作品，直接复制整段 <figure class="photo"> 即可，网格会自动排版。
-      -->
-
-      <div class="photo-grid" id="photoGrid">
-
-        <figure class="photo is-empty">
-          <div class="photo-media"><span class="photo-plus" aria-hidden="true">+</span></div>
-          <figcaption class="photo-meta">
-            <span class="photo-title">作品位 01</span>
-            <span class="photo-year">待添加</span>
-          </figcaption>
-        </figure>
-
-        <figure class="photo is-empty">
-          <div class="photo-media"><span class="photo-plus" aria-hidden="true">+</span></div>
-          <figcaption class="photo-meta">
-            <span class="photo-title">作品位 02</span>
-            <span class="photo-year">待添加</span>
-          </figcaption>
-        </figure>
-
-        <figure class="photo is-empty">
-          <div class="photo-media"><span class="photo-plus" aria-hidden="true">+</span></div>
-          <figcaption class="photo-meta">
-            <span class="photo-title">作品位 03</span>
-            <span class="photo-year">待添加</span>
-          </figcaption>
-        </figure>
-
-        <figure class="photo is-empty">
-          <div class="photo-media"><span class="photo-plus" aria-hidden="true">+</span></div>
-          <figcaption class="photo-meta">
-            <span class="photo-title">作品位 04</span>
-            <span class="photo-year">待添加</span>
-          </figcaption>
-        </figure>
-
-        <figure class="photo is-empty">
-          <div class="photo-media"><span class="photo-plus" aria-hidden="true">+</span></div>
-          <figcaption class="photo-meta">
-            <span class="photo-title">作品位 05</span>
-            <span class="photo-year">待添加</span>
-          </figcaption>
-        </figure>
-
-        <figure class="photo is-empty">
-          <div class="photo-media"><span class="photo-plus" aria-hidden="true">+</span></div>
-          <figcaption class="photo-meta">
-            <span class="photo-title">作品位 06</span>
-            <span class="photo-year">待添加</span>
-          </figcaption>
-        </figure>
-
       </div>
 
-      <p class="photo-hint">
-        图片存放目录 <code>assets/art/</code>，替换方法见该目录下的 <code>README.md</code>。
-        网格中显示为统一比例裁切，点开查看原图。
-      </p>
-    </div>
-  </section>
+      <ul class="author__urls">
+        <li>
+          <a href="mailto:2836872491@qq.com">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm1.6 2L12 12.3 19.4 7H4.6zM4 9.1V17h16V9.1l-7.4 5.3a1 1 0 0 1-1.2 0L4 9.1z"/></svg>
+            Email
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/littleBlack2003" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.9 10.9c.6.1.8-.2.8-.5v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 1.8 2.7 1.3 3.4 1 .1-.7.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.6-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.5A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg>
+            GitHub
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/littleBlack2003?tab=repositories" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7l2 2h7a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm1 3v11h14V8h-5.6l-2-2H5z"/></svg>
+            代码仓库
+          </a>
+        </li>
+      </ul>
+    </aside>
 
-  <!-- ============ CONTACT ============ -->
-  <section class="section section-alt" id="contact">
-    <div class="wrap">
-      <h2 class="section-title"><span class="idx">04</span> 联系</h2>
-      <p class="section-sub">欢迎就器件物理、稳定性建模、测量自动化或摄影交流。</p>
-      <div class="contact-grid">
-        <a class="contact-card" href="https://github.com/littleBlack2003" target="_blank" rel="noopener">
-          <span class="c-label">GitHub</span>
-          <span class="c-value">littleBlack2003</span>
-        </a>
-        <a class="contact-card" href="mailto:2836872491@qq.com">
-          <span class="c-label">Email</span>
-          <span class="c-value">2836872491@qq.com</span>
-        </a>
-        <div class="contact-card static">
-          <span class="c-label">Affiliation</span>
-          <span class="c-value">武汉大学 · Wuhan University</span>
+    <!-- ================= main ================= -->
+    <main class="page" itemscope itemtype="http://schema.org/Person">
+
+      <h1 class="page__title" id="about">你好！</h1>
+
+      <div class="page__content">
+
+        <p>
+          我是 <strong>吴小黑（WuXiaoHei）</strong>，在武汉大学从事
+          <strong>有机太阳能电池（OSC）</strong>相关研究。主要关注器件在应力条件下的退化路径：
+          反向偏压区的非欧姆拐点、载流子迁移率与复合的温度依赖，
+          以及用短期加速老化数据外推长期寿命时模型的可外推性。
+        </p>
+
+        <p>
+          研究方法上，我倾向于「物理模型 + 数据驱动」的混合路线 —— 先用物理约束搭骨架，
+          再让机器学习去学残差，而不是把黑箱直接丢给数据。实验这边，我主要做阻抗谱（EIS）、
+          偏压扫描与高通量老化测试。
+        </p>
+
+        <p>
+          工程侧，我给实验室搭了整套工具链：从 HP/Agilent 4284A 的阻抗谱自动化采集，
+          到用 KiCad 重画的源表 <strong>μSMU-neo</strong>，再到高通量测试治具的 CAD 设计。
+        </p>
+
+        <p>
+          科研之外我拍照，下面「摄影」一栏就是放我作品的地方。
+        </p>
+
+        <h2 id="research">研究</h2>
+
+        <p class="section-note">以下方向对应我公开在 GitHub 上的工作。</p>
+
+        <ul class="entry-list">
+
+          <li class="entry">
+            <h3 class="entry__title">有机太阳能电池稳定性预测</h3>
+            <p>
+              用短期（200 h）加速老化数据预测长期（500–2000 h）的 PCE 保持率。
+              核心是「物理模型外推 + 机器学习学残差」，并搭建 Transformer 时序分支做对照。
+            </p>
+            <p class="entry__meta">多光强（1x / 1.5x）短期曲线 · 5 折交叉验证 · 五个目标时刻</p>
+            <p class="entry__links">
+              <a href="https://github.com/littleBlack2003?tab=repositories" target="_blank" rel="noopener">Code</a>
+            </p>
+          </li>
+
+          <li class="entry">
+            <h3 class="entry__title">反向偏压下的电流拐点机理</h3>
+            <p>
+              面向 PM6:Y6 体系，研究反向偏压区「拐点」（reverse-bias knee）的来源。
+              采用无外部分流电阻的本征模型，在 100–300 K 内做温度扫描与数值审计，
+              并保留完整的实验约束与可复现审计链。
+            </p>
+            <p class="entry__meta">物理模型 · 专家评审包 · 哈希清单校验</p>
+            <p class="entry__links">
+              <a href="https://github.com/littleBlack2003?tab=repositories" target="_blank" rel="noopener">Code</a>
+            </p>
+          </li>
+
+          <li class="entry">
+            <h3 class="entry__title">EIS 阻抗谱自动化测量系统</h3>
+            <p>
+              通过 VISA/GPIB 控制 HP/Agilent 4284A，做频率扫描与复阻抗采集，
+              实时绘制 Nyquist 与 Bode 曲线，支持开短路校准、CSV 导出与等效电路拟合。
+            </p>
+            <p class="entry__meta">命令行 · 桌面 GUI · 无硬件仿真模式</p>
+            <p class="entry__links">
+              <a href="https://github.com/littleBlack2003?tab=repositories" target="_blank" rel="noopener">Code</a>
+            </p>
+          </li>
+
+          <li class="entry">
+            <h3 class="entry__title">μSMU-neo 开源源表改版</h3>
+            <p>
+              基于开源 μSMU 的改版：保持 ±5 V / ±40 mA 量程不变，修正原设计评审中的安全与采样问题，
+              更新 IC 型号至国内现货可采购，并在 STM32G431 上重写固件。
+            </p>
+            <p class="entry__meta">KiCad 10 · 国产供应链 · 许可合规保留署名</p>
+            <p class="entry__links">
+              <a href="https://github.com/littleBlack2003?tab=repositories" target="_blank" rel="noopener">Code</a>
+            </p>
+          </li>
+
+          <li class="entry">
+            <h3 class="entry__title">高通量 OSC 测试治具</h3>
+            <p>
+              面向高通量老化测试的机械治具与夹具设计，包含 25 mm 片子及其盖板的三维 CAD 模型，
+              用于支撑多器件并行测试的装夹与定位。
+            </p>
+            <p class="entry__meta">SolidWorks 2025 导出 STEP AP203</p>
+            <p class="entry__links">
+              <a href="https://github.com/littleBlack2003?tab=repositories" target="_blank" rel="noopener">Code</a>
+            </p>
+          </li>
+
+        </ul>
+
+        <h2 id="photos">摄影</h2>
+
+        <p class="section-note">
+          我的艺术摄影作品。点击任意一张查看原图（不裁剪），可用左右方向键翻页。
+        </p>
+
+        <!--
+          添加照片：把图片放进 assets/art/，然后照下面这段结构替换占位卡片：
+
+          <figure class="photo">
+            <div class="photo-media">
+              <img src="assets/art/photo-01.jpg" alt="作品名" loading="lazy">
+            </div>
+            <figcaption class="photo-meta">
+              <span class="photo-title">作品名</span>
+              <span class="photo-year">2026</span>
+            </figcaption>
+          </figure>
+
+          关键是去掉 class 里的 is-empty。更多说明见 assets/art/README.md
+        -->
+
+        <div class="photo-grid" id="photoGrid">
+
+          <figure class="photo is-empty">
+            <div class="photo-media"><span class="photo-plus" aria-hidden="true">+</span></div>
+            <figcaption class="photo-meta">
+              <span class="photo-title">作品位 01</span>
+              <span class="photo-year">待添加</span>
+            </figcaption>
+          </figure>
+
+          <figure class="photo is-empty">
+            <div class="photo-media"><span class="photo-plus" aria-hidden="true">+</span></div>
+            <figcaption class="photo-meta">
+              <span class="photo-title">作品位 02</span>
+              <span class="photo-year">待添加</span>
+            </figcaption>
+          </figure>
+
+          <figure class="photo is-empty">
+            <div class="photo-media"><span class="photo-plus" aria-hidden="true">+</span></div>
+            <figcaption class="photo-meta">
+              <span class="photo-title">作品位 03</span>
+              <span class="photo-year">待添加</span>
+            </figcaption>
+          </figure>
+
+          <figure class="photo is-empty">
+            <div class="photo-media"><span class="photo-plus" aria-hidden="true">+</span></div>
+            <figcaption class="photo-meta">
+              <span class="photo-title">作品位 04</span>
+              <span class="photo-year">待添加</span>
+            </figcaption>
+          </figure>
+
+          <figure class="photo is-empty">
+            <div class="photo-media"><span class="photo-plus" aria-hidden="true">+</span></div>
+            <figcaption class="photo-meta">
+              <span class="photo-title">作品位 05</span>
+              <span class="photo-year">待添加</span>
+            </figcaption>
+          </figure>
+
+          <figure class="photo is-empty">
+            <div class="photo-media"><span class="photo-plus" aria-hidden="true">+</span></div>
+            <figcaption class="photo-meta">
+              <span class="photo-title">作品位 06</span>
+              <span class="photo-year">待添加</span>
+            </figcaption>
+          </figure>
+
         </div>
-      </div>
-    </div>
-  </section>
 
-</main>
+        <h2 id="contact">联系</h2>
 
-<footer class="site-footer">
-  <div class="wrap footer-inner">
-    <span>© <span id="year">2026</span> WuXiaoHei</span>
-    <span class="footer-note">Hosted on GitHub Pages</span>
+        <p>
+          欢迎就器件物理、稳定性建模、测量自动化或摄影交流。
+        </p>
+
+        <ul class="contact-list">
+          <li><span class="contact__k">Email</span>
+            <a href="mailto:2836872491@qq.com">2836872491@qq.com</a></li>
+          <li><span class="contact__k">GitHub</span>
+            <a href="https://github.com/littleBlack2003" target="_blank" rel="noopener">littleBlack2003</a></li>
+          <li><span class="contact__k">单位</span>
+            <span>武汉大学 · Wuhan University</span></li>
+        </ul>
+
+      </div><!-- /.page__content -->
+    </main>
+
+  </div><!-- /.container -->
+</div><!-- /.initial-content -->
+
+<footer class="page__footer">
+  <div class="page__footer-inner">
+    <p>&copy; <span id="year">2026</span> WuXiaoHei. Hosted on GitHub Pages.</p>
   </div>
 </footer>
 
-<!-- ============ LIGHTBOX ============ -->
+<!-- ================= lightbox ================= -->
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="查看大图" hidden>
   <button class="lb-btn lb-close" type="button" aria-label="关闭">&times;</button>
   <button class="lb-btn lb-prev" type="button" aria-label="上一张">&#8249;</button>
